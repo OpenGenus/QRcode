@@ -2,13 +2,16 @@
 __pycache__/
 *.py[cod]
 *$py.class
+# Editor
+.vscode
 
 # C extensions
 *.so
 
-# Distribution / packaging
+# Distribution / packaging /virtualenv
 .Python
 build/
+env/
 develop-eggs/
 dist/
 downloads/
