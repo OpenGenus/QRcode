@@ -6,8 +6,10 @@ from mode import (
 )
 
 from utils import (
-    data_encode
+    data_encode,
+    get_version_and_capacity
 )
+
 class QRCODE:
     def __init__(self):
         self.data = ''
@@ -18,6 +20,7 @@ class QRCODE:
         self.data = data
         self.mode = get_mode(data)
         self.encode()
+        self.determine_version()
     def encode(self):
         if self.mode == NUMERIC:
             pass
@@ -26,3 +29,10 @@ class QRCODE:
             pairs_list = re.findall('..?',self.data) # separates in pair.
             data = data_encode(pairs_list,len(self.data))
             print(data)
+    def determine_version(self):
+        data_length = len(self.data)
+        ver_and_cap = get_version_and_capacity(data_length,self.mode)
+        print(ver_and_cap)
+        
+        
+                    
