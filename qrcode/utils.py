@@ -1,7 +1,14 @@
+import sys
 from tables import (
     get_alphabet_table,
     char_capacity_table
 )
+
+from mode import (
+    NUMERIC,
+    ALPHA_NUMERIC
+)
+
 alphabet_table = get_alphabet_table()
 encoded_pairs = []
 def data_encode(pairs_list,data_length):
@@ -30,5 +37,17 @@ def data_encode(pairs_list,data_length):
                 binary_final = '0'+binary_final
         encoded_pairs.append(binary_final)    
 
-        
     return encoded_pairs
+
+def get_version_and_capacity(data_length,mode):
+    capacity_table = char_capacity_table()
+    min = sys.maxsize
+    for version in range(len(capacity_table)):   
+        for error_level in range(4):
+            if (mode == ALPHA_NUMERIC):
+                if (min > capacity_table[version][error_level][1] and
+                        capacity_table[version][error_level][1]
+                            >= data_length):
+                    min = capacity_table[version][error_level][1]
+                    fixed_version = version
+    return (fixed_version+1,min)
