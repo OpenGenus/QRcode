@@ -27,7 +27,7 @@ class QRCODE:
         else:
             print("Encoding.....")
             pairs_list = re.findall('..?',self.data) # separates in pair.
-            data = data_encode(pairs_list,len(self.data))
+            data = data_encode(pairs_list)
             print(data)
     def determine_version(self):
         data_length = len(self.data)
