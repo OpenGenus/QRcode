@@ -11,18 +11,18 @@ from mode import (
 
 alphabet_table = get_alphabet_table()
 encoded_pairs = []
-def data_encode(pairs_list,data_length):
+def data_encode(pairs_list):
     for pair in pairs_list:
         if len(pair) == 2:
             first = alphabet_table[pair[0]]
             second = alphabet_table[pair[1]]
             final = 45*first + second
             binary_final = '{0:b}'.format(final)
-            ''' 
+            '''
                 padding the string with 0's to
                 match the data length
             ''' 
-            while(len(binary_final)!=data_length):
+            while(len(binary_final)!=11):
                 binary_final = '0' + binary_final
         else:
             '''
