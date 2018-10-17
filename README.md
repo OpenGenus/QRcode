@@ -7,5 +7,9 @@ Data Modes Handled by the library at the moment are :-
     <li>Alpha-Numeric</li>
 </ul>
 
+## Todos
+[Todo-1](https://github.com/vinitraj10/QRcode/projects/1#card-13945044)
+[Todo-2](https://github.com/vinitraj10/QRcode/projects/1#card-13945073)
+
 ## References
 [https://thonky.com/qr-code-tutorial/](https://thonky.com/qr-code-tutorial/)
