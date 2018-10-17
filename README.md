@@ -2,11 +2,9 @@
 QRcode is a python library which generates qrcode images for the data of different types.
 
 ## Modes
+Data Modes Handled by the library at the moment are :-
 <ul>
     <li>Alpha-Numeric</li>
-    <li>Numeric</li>
-    <li>Kanji</li>
-    <li>Bytes</li>
 </ul>
 
 ## References
