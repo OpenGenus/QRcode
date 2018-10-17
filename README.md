@@ -10,4 +10,4 @@ QRcode is a python library which generates qrcode images for the data of differe
 </ul>
 
 ## References
-[qr-code-tutorial](https://thonky.com/qr-code-tutorial/)
+[](https://thonky.com/qr-code-tutorial/)
