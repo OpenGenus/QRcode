@@ -8,9 +8,9 @@ Data Modes Handled by the library at the moment are :-
 </ul>
 
 ## Todos
-1.) [Todo-1](https://github.com/vinitraj10/QRcode/projects/1#card-13945044) 
+1.) [Error-Correction](https://github.com/vinitraj10/QRcode/projects/1#card-13945044) 
 
-2>) [Todo-2](https://github.com/vinitraj10/QRcode/projects/1#card-13945073) 
+2.) [Add more modes](https://github.com/vinitraj10/QRcode/projects/1#card-13945073) 
 
 
 ## References
