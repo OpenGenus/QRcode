@@ -1,16 +1,16 @@
 import re
-from mode import (
+from qrcode.mode import (
     get_mode,
     NUMERIC,
     ALPHA_NUMERIC
 )
 
-from utils import (
+from qrcode.utils import (
     data_encode,
     get_version_and_capacity
 )
 
-from constants import (
+from qrcode.constants import (
     mode_indicator,
     char_count_indicator
 )

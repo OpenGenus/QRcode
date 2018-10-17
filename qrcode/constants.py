@@ -1,4 +1,4 @@
-from mode import (
+from qrcode.mode import (
     NUMERIC,
     ALPHA_NUMERIC
 )

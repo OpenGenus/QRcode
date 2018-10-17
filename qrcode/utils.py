@@ -1,10 +1,10 @@
 import sys
-from tables import (
+from qrcode.tables import (
     get_alphabet_table,
     char_capacity_table
 )
 
-from mode import (
+from qrcode.mode import (
     NUMERIC,
     ALPHA_NUMERIC
 )
