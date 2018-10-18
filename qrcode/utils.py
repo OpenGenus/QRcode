@@ -1,10 +1,10 @@
 import sys
-from qrcode.tables import (
+from tables import (
     get_alphabet_table,
     char_capacity_table
 )
 
-from qrcode.mode import (
+from mode import (
     NUMERIC,
     ALPHA_NUMERIC
 )
@@ -50,4 +50,22 @@ def get_version_and_capacity(data_length,mode):
                             >= data_length):
                     min = capacity_table[version][error_level][1]
                     fixed_version = version
+            elif (mode == NUMERIC):
+                if (min > capacity_table[version][error_level][0] and
+                        capacity_table[version][error_level][0]
+                            >= data_length):
+                    min = capacity_table[version][error_level][0]
+                    fixed_version = version
     return (fixed_version+1,min)
+
+def numeric_encode(pairs_list):
+    # print(pairs_list)
+    for pair in pairs_list:
+        if (len(pair) == 1):
+            binary = '{{0:0{0}b}}'.format(4).format(int(pair))
+        elif (len(pair) == 2):
+            binary = '{{0:0{0}b}}'.format(7).format(int(pair))
+        else:
+             binary = '{{0:0{0}b}}'.format(10).format(int(pair))
+        encoded_pairs.append(binary)
+    return encoded_pairs
