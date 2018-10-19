@@ -1,4 +1,4 @@
-from qrcode.main import QRCODE
+from main import QRCODE
 
 obj = QRCODE()
-obj.create('HELLO WORLD')
+obj.create('8675309')
