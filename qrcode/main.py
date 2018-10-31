@@ -7,6 +7,7 @@ from mode import (
 
 from utils import (
     data_encode,
+    numeric_encode,
     get_version_and_capacity
 )
 
@@ -38,7 +39,9 @@ class QRCODE:
         self.level = ver_and_cap[2]
     def encode(self):
         if self.mode == NUMERIC:
-            pass
+            pairs_list = re.findall('.{1,3}', self.data)
+            data = numeric_encode(pairs_list)
+
         else:
             pairs_list = re.findall('..?',self.data) # separates in pair.
             data = data_encode(pairs_list)

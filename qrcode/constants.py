@@ -13,21 +13,24 @@ def char_count_indicator(version,mode,data_len):
         if(mode==ALPHA_NUMERIC):
             while(len(binary)!=9):
                 binary = '0'+binary
-        else:
+        elif(mode == NUMERIC):
             # make binary 10 bits with 0 left padded for numeric
-            pass
+            while(len(binary)!=10):
+                binary = '0'+binary
     elif(10<=version<=26):
         if(mode==ALPHA_NUMERIC):
             while(len(binary)!=11):
                 binary = '0'+binary
-        else:
+        elif(mode == NUMERIC):
             # make binary a 12 bit for numeric
-            pass
+            while(len(binary)!=12):
+                binary = '0'+binary
     else:
         if(mode==ALPHA_NUMERIC):
             while(len(binary)!=13):
                 binary = '0'+binary
-        else:
+        elif(mode == NUMERIC):
             #make binary 14bit for numeric
-            pass
+            while(len(binary)!=14):
+                binary = '0'+binary
     return binary
