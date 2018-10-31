@@ -51,6 +51,7 @@ def get_version_and_capacity(data_length,mode):
                             >= data_length):
                     min = capacity_table[version][error_level][1]
                     fixed_version = version
+
             elif (mode == NUMERIC):
                 if (min > capacity_table[version][error_level][0] and
                         capacity_table[version][error_level][0]

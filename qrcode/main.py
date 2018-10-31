@@ -24,6 +24,7 @@ class QRCODE:
         self.mode = ''
         self.version = 0
         self.capacity = 0
+        self.level = ''
     def __str__(self):
         return self.data + " " + self.mode
     def create(self,data):
@@ -37,7 +38,7 @@ class QRCODE:
         ver_and_cap = get_version_and_capacity(data_length,self.mode)
         self.version = ver_and_cap[0]
         self.capacity = ver_and_cap[1]
-
+        self.level = ver_and_cap[2]
     def encode(self):
         if self.mode == NUMERIC:
             pairs_list = re.findall('.{1,3}', self.data)
@@ -46,6 +47,7 @@ class QRCODE:
         elif self.mode == ALPHA_NUMERIC:
             pairs_list = re.findall('..?',self.data) # separates in pair.
             data = data_encode(pairs_list)
+
         else:
             data = byte_encode(self.data)
             
@@ -63,3 +65,4 @@ class QRCODE:
                 encoded_data
         )
         print(data_with_error)
+
