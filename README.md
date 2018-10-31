@@ -1,17 +1,43 @@
 # QRcode
 QRcode is a python library which generates qrcode images for the data of different types.
 
-## Modes
-Data Modes Handled by the library at the moment are :-
-<ul>
-    <li>Alpha-Numeric</li>
-</ul>
-
 ## Todos
-1.) [Error-Correction](https://github.com/vinitraj10/QRcode/projects/1#card-13945044) 
+> List of Tasks to be done
 
-2.) [Add more modes](https://github.com/vinitraj10/QRcode/projects/1#card-13945073) 
+* [x] Data Analysis
+* [ ] Data Encoding Modes
+    - [x] Numeric
+    - [x] Alphaneumeric
+    - [x] Byte
+    - [ ] Kanji
+* [ ] Error Correction Part
+ (Areas to understand)
+    * Reed Solomon process
+    * Polynomial Long Division
+    * Galois Field Arithematic
+* [ ] Structuring Final Message ( Interleaving  process)
+* [ ] Placing Data in QR code
+    - [ ] placing function patterns and data bits
+    - [ ] add the finder patterns and separators
+    - [ ] add alignment pattern
+    - [ ] add timing pattern
+    - [ ] add data bits to QR
+    - [ ] add Dark modules and Reserved areas
+* [ ] Apply Mask pattern to data and error correction bits
+* [ ] Create Format and Version strings
+:tada:
+
+## Usage
+ * ` cd ` to the root folder.
+ * Currently to test we add the data in the `test.py`.Here:
+ ```
+ obj.create('<place your data here>')
+
+> Eg. obj.create('Hello, World!')
+
+```
+* Run `python test.py`
 
 
 ## References
-[https://thonky.com/qr-code-tutorial/](https://thonky.com/qr-code-tutorial/)
+[QRcode Tutorial](https://thonky.com/qr-code-tutorial/) 
