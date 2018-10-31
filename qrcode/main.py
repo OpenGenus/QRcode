@@ -1,16 +1,16 @@
 import re
-from qrcode.mode import (
+from mode import (
     get_mode,
     NUMERIC,
     ALPHA_NUMERIC
 )
 
-from qrcode.utils import (
+from utils import (
     data_encode,
     get_version_and_capacity
 )
 
-from qrcode.constants import (
+from constants import (
     mode_indicator,
     char_count_indicator
 )
@@ -21,6 +21,7 @@ class QRCODE:
         self.mode = ''
         self.version = 0
         self.capacity = 0
+        self.level = ''
     def __str__(self):
         return self.data + " " + self.mode
     def create(self,data):
@@ -34,7 +35,7 @@ class QRCODE:
         ver_and_cap = get_version_and_capacity(data_length,self.mode)
         self.version = ver_and_cap[0]
         self.capacity = ver_and_cap[1]
-
+        self.level = ver_and_cap[2]
     def encode(self):
         if self.mode == NUMERIC:
             pass
@@ -54,5 +55,5 @@ class QRCODE:
                     char_count_indicator_data + 
                     encoded_data
             )
-            print(data_with_error)
+            print(len(data_with_error))
                     

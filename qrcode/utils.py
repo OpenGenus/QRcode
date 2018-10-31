@@ -1,10 +1,10 @@
 import sys
-from qrcode.tables import (
+from tables import (
     get_alphabet_table,
     char_capacity_table
 )
 
-from qrcode.mode import (
+from mode import (
     NUMERIC,
     ALPHA_NUMERIC
 )
@@ -50,4 +50,5 @@ def get_version_and_capacity(data_length,mode):
                             >= data_length):
                     min = capacity_table[version][error_level][1]
                     fixed_version = version
-    return (fixed_version+1,min)
+                    level = error_level
+    return (fixed_version+1,min,level)

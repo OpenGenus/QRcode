@@ -39,3 +39,9 @@ def char_capacity_table():
         ] 
     ]
     return capacity_table
+
+#                                                             
+error_correction_table = [
+                            # version(L,M,Q,H)
+                            [(19,7,1,19)],[(16,10,1,16)],[(13,13,1,13)],[(9,17,1,9)]  
+                        ]
