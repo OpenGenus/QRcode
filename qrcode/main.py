@@ -2,12 +2,14 @@ import re
 from mode import (
     get_mode,
     NUMERIC,
-    ALPHA_NUMERIC
+    ALPHA_NUMERIC,
+    BYTE
 )
 
 from utils import (
     data_encode,
     numeric_encode,
+    byte_encode,
     get_version_and_capacity
 )
 
@@ -42,21 +44,25 @@ class QRCODE:
             pairs_list = re.findall('.{1,3}', self.data)
             data = numeric_encode(pairs_list)
 
-        else:
+        elif self.mode == ALPHA_NUMERIC:
             pairs_list = re.findall('..?',self.data) # separates in pair.
             data = data_encode(pairs_list)
-            encoded_data = ''
-            for each_encoded_data in data:
-                encoded_data+=each_encoded_data
-            mode_indicator_data = mode_indicator(self.mode)
-            char_count_indicator_data = char_count_indicator(
-                                            self.version,
-                                            self.mode,
-                                            len(self.data)
-                                        )
-            data_with_error = mode_indicator_data+ (
-                    char_count_indicator_data + 
-                    encoded_data
-            )
-            print(len(data_with_error))
-                    
+
+        else:
+            data = byte_encode(self.data)
+            
+        encoded_data = ''
+        for each_encoded_data in data:
+            encoded_data+=each_encoded_data
+        mode_indicator_data = mode_indicator(self.mode)
+        char_count_indicator_data = char_count_indicator(
+                                        self.version,
+                                        self.mode,
+                                        len(self.data)
+                                    )
+        data_with_error = mode_indicator_data+ (
+                char_count_indicator_data + 
+                encoded_data
+        )
+        print(data_with_error)
+
