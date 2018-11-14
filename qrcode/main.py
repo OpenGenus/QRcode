@@ -3,13 +3,15 @@ from mode import (
     get_mode,
     NUMERIC,
     ALPHA_NUMERIC,
-    BYTE
+    BYTE,
+    KANJI
 )
 
 from utils import (
     data_encode,
     numeric_encode,
     byte_encode,
+    kanji_encode,
     get_version_and_capacity
 )
 
@@ -38,7 +40,7 @@ class QRCODE:
         ver_and_cap = get_version_and_capacity(data_length,self.mode)
         self.version = ver_and_cap[0]
         self.capacity = ver_and_cap[1]
-        self.level = ver_and_cap[2]
+        # self.level = ver_and_cap[2]
     def encode(self):
         if self.mode == NUMERIC:
             pairs_list = re.findall('.{1,3}', self.data)
@@ -48,9 +50,10 @@ class QRCODE:
             pairs_list = re.findall('..?',self.data) # separates in pair.
             data = data_encode(pairs_list)
 
-        else:
+        elif self.mode == BYTE:
             data = byte_encode(self.data)
-            
+        else:
+            data = kanji_encode(self.data)
         encoded_data = ''
         for each_encoded_data in data:
             encoded_data+=each_encoded_data

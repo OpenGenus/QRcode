@@ -7,7 +7,8 @@ from tables import (
 from mode import (
     NUMERIC,
     ALPHA_NUMERIC,
-    BYTE
+    BYTE,
+    KANJI
 )
 
 alphabet_table = get_alphabet_table()
@@ -64,6 +65,12 @@ def get_version_and_capacity(data_length,mode):
                             >= data_length):
                     min = capacity_table[version][error_level][2]
                     fixed_version = version
+            else:
+                if (min > capacity_table[version][error_level][3] and
+                        capacity_table[version][error_level][3]
+                            >= data_length):
+                    min = capacity_table[version][error_level][3]
+                    fixed_version = version
     return (fixed_version+1,min)
 
 def numeric_encode(pairs_list):
@@ -87,3 +94,26 @@ def byte_encode(data):
             binary = '{{0:0{0}b}}'.format(8).format(each)
         encoded_pairs.append(binary)
     return encoded_pairs
+
+def kanji_encode(data):
+    def two_bytes(data):
+        def next_byte(b):
+            if not isinstance(b, int):
+                return ord(b)
+            else:
+                return b
+        for i in range(0, len(data), 2):
+            yield (next_byte(data[i]) << 8) | next_byte(data[i+1])
+    if isinstance(data, bytes):
+        data = data.decode('shiftjis').encode('shiftjis')
+    else:
+        data = data.encode('shiftjis')
+    for asint in two_bytes(data):
+        if 0x8140 <= asint <= 0x9FFC:
+            difference = asint - 0x8140
+        elif 0xE040 <= asint <= 0xEBBF:
+            difference = asint - 0xC140
+        msb = (difference >> 8)
+        lsb = (difference & 0x00FF)
+        binary_final = '{0:013b}'.format((msb * 0xC0) + lsb)
+    return binary_final
